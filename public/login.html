@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/login.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://codepen.io/technext/pen/WNpWeWw"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="container" class="container">
+      <!-- FORM SECTION -->
+      <div class="row">
+        <!-- SIGN UP -->
+        <div class="col align-items-center flex-col sign-up">
+          <div class="form-wrapper align-items-center">
+            <div class="form sign-up">
+              <div class="input-group">
+                <i class="bx bxs-user"></i>
+                <input type="text" id="Username" placeholder="Username" />
+              </div>
+              <div class="input-group">
+                <i class="bx bx-mail-send"></i>
+                <input type="email" id="Email" placeholder="Email" />
+              </div>
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input type="password" id="Password" placeholder="Password" />
+              </div>
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input
+                  type="password"
+                  id="ConfirmPassword"
+                  placeholder="Confirm password"
+                />
+              </div>
+              <button id="signupButton">Sign up</button>
+              <p>
+                <span> Already have an account? </span>
+                <b onclick="toggle()" class="pointer"> Sign in here </b>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- END SIGN UP -->
+        <!-- SIGN IN -->
+        <div class="col align-items-center flex-col sign-in">
+          <div class="form-wrapper align-items-center">
+            <div class="form sign-in">
+              <div class="input-group">
+                <i class="bx bx-mail-send"></i>
+                <input type="email" id="Emailid" placeholder="Email" />
+              </div>
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input type="password" id="Passwordid" placeholder="Password" />
+              </div>
+              <button id="loginButton">Sign in</button>
+              <p>
+                <b> Forgot password? </b>
+              </p>
+              <p>
+                <span> Don't have an account? </span>
+                <b onclick="toggle()" class="pointer"> Sign up here </b>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- END SIGN IN -->
+      </div>
+      <!-- END FORM SECTION -->
+      <!-- CONTENT SECTION -->
+      <div class="row content-row">
+        <!-- SIGN IN CONTENT -->
+        <div class="col align-items-center flex-col">
+          <div class="text sign-in">
+            <h2>Welcome</h2>
+          </div>
+          <div class="img sign-in"></div>
+        </div>
+        <!-- END SIGN IN CONTENT -->
+        <!-- SIGN UP CONTENT -->
+        <div class="col align-items-center flex-col">
+          <div class="img sign-up"></div>
+          <div class="text sign-up">
+            <h2>Join with us</h2>
+          </div>
+        </div>
+        <!-- END SIGN UP CONTENT -->
+      </div>
+      <!-- END CONTENT SECTION -->
+    </div>
+    <script>
+      let container = document.getElementById("container");
+
+      function toggle() {
+        container.classList.toggle("sign-in");
+        container.classList.toggle("sign-up");
+      }
+
+      setTimeout(() => {
+        container.classList.add("sign-in");
+      }, 200);
+
+      // Mock Signup Logic
+      
+
+      // Mock Login Logic
+     
+      
+    </script>
+
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+  const firebaseConfig = {
+      apiKey: "AIzaSyDoN9-UcsGrHnMqB6E0f8w-41NvyFF64xI",
+      authDomain: "login-cf427.firebaseapp.com",
+      projectId: "login-cf427",
+      storageBucket: "login-cf427.appspot.com",
+      messagingSenderId: "216387764034",
+      appId: "1:216387764034:web:b899b7dea4f6ff0f7312db",
+      databaseURL: "https://login-cf427-default-rtdb.firebaseio.com/"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const database = getDatabase(app);
+
+  // Sign-up Logic
+  document.getElementById('signupButton').addEventListener('click', () => {
+      const username = document.getElementById('Username').value;
+      const email = document.getElementById('Email').value;
+      const password = document.getElementById('Password').value;
+      const confirmPassword = document.getElementById('ConfirmPassword').value;
+
+      if (!username || !email || !password || !confirmPassword) {
+          alert('Please fill in all fields.');
+          return;
+      }
+
+      if (password !== confirmPassword) {
+          alert('Passwords do not match!');
+          return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+              const user = userCredential.user;
+              set(ref(database, 'users/' + user.uid), {
+                  username: username,
+                  email: email
+              })
+              .then(() => {
+                  alert('Signup successful and data saved!');
+              })
+              .catch((error) => {
+                  alert('Error saving data: ' + error.message);
+              });
+          })
+          .catch((error) => {
+              alert(error.message);
+          });
+  });
+
+  // Login Logic
+  document.getElementById('loginButton').addEventListener('click', () => {
+      const email = document.getElementById('Emailid').value;
+      const password = document.getElementById('Passwordid').value;
+
+      if (!email || !password) {
+          alert('Please fill in all fields.');
+          return;
+      }
+
+      signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+              const user = userCredential.user;
+              alert('Login successful!');
+          })
+          .catch((error) => {
+              alert(error.message);
+          });
+  });
+</script>
+
+
+
+
+
+</body>
+  </body>
+</html>

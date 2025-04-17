@@ -1,0 +1,73 @@
+doctype html
+html(lang="en")
+    head
+        title Admin Dashboard
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+        script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+    body
+        .container-fluid
+            h1.mt-4 Admin Dashboard
+
+            // Metrics Section
+            .row.mb-4
+                .col-md-6
+                    .card.text-white.bg-info
+                        .card-body
+                            h5.card-title Total Products
+                            p.card-text(id="totalProducts") 0
+                .col-md-6
+                    .card.text-white.bg-success
+                        .card-body
+                            h5.card-title Total Orders
+                            p.card-text(id="totalOrders") 0
+
+            // Add Product Form
+            form#addProductForm.mb-4(action="/admin/add-product", method="POST")
+                input(type="hidden" id="productId" name="id")  // Hidden field for product ID when editing
+                .form-group
+                    label(for="name") Product Name
+                    input.form-control(type="text" id="name" name="name" required)
+                .form-group
+                    label(for="price") Price
+                    input.form-control(type="number" id="price" name="price" required)
+                .form-group
+                    label(for="description") Description
+                    textarea.form-control(id="description" name="description" required)
+                button.btn.btn-primary(type="submit") Add Product
+
+            h2 Products
+            .table-responsive
+                table.table
+                    thead
+                        tr
+                            th Product Name
+                            th Price
+                            th Description
+                            th Actions
+                    tbody#productList
+                        // Dynamic product rows will be added here
+
+            h2 Order Details
+            .table-responsive
+                table.table
+                    thead
+                        tr
+                            th Order ID
+                            th Product Name
+                            th Quantity
+                            th Total Price
+                    tbody#orderList
+                        tr
+                            td 1
+                            td Product 1
+                            td 2
+                            td $20.00
+                        tr
+                            td 2
+                            td Product 2
+                            td 1
+                            td $20.00
+
+        script(src="/javascripts/admin-dashboard.js")

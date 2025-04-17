@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 class="mt-4">Admin Dashboard</h1>
+
+        <!-- Metrics Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Products</h5>
+                        <p class="card-text" id="totalProducts">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Orders</h5>
+                        <p class="card-text" id="totalOrders">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Product Form -->
+        <form id="addProductForm" class="mb-4">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Product</button>
+        </form>
+
+        <h2>Products</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productList">
+                    <!-- Dynamic product rows will be added here -->
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Order Details</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody id="orderList">
+                    <tr>
+                        <td>1</td>
+                        <td>Product 1</td>
+                        <td>2</td>
+                        <td>$20.00</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Product 2</td>
+                        <td>1</td>
+                        <td>$20.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let productCount = 0; // To track total products
+        let orderCount = 2; // Initial order count based on sample orders
+
+        document.getElementById('addProductForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const productName = document.getElementById('name').value;
+            const productPrice = document.getElementById('price').value;
+            const productDescription = document.getElementById('description').value;
+
+            // Create a unique ID for each product
+            const productId = `product-${productCount}`;
+
+            // Create a new product row in the products table
+            const productRow = `
+                <tr id="${productId}">
+                    <td>${productName}</td>
+                    <td>$${parseFloat(productPrice).toFixed(2)}</td>
+                    <td>${productDescription}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editProduct('${productId}')">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProduct('${productId}')">Delete</button>
+                    </td>
+                </tr>
+            `;
+            document.getElementById('productList').insertAdjacentHTML('beforeend', productRow);
+
+            // Increment the product count and update the total products display
+            productCount++;
+            document.getElementById('totalProducts').innerText = productCount;
+
+            // Optionally, reset the form after submission
+            this.reset();
+        });
+
+        // Edit product function
+        function editProduct(productId) {
+            const productRow = document.getElementById(productId);
+            const productName = productRow.children[0].innerText;
+            const productPrice = productRow.children[1].innerText.replace('$', '');
+            const productDescription = productRow.children[2].innerText;
+
+            // Fill the form with the existing values to allow editing
+            document.getElementById('name').value = productName;
+            document.getElementById('price').value = productPrice;
+            document.getElementById('description').value = productDescription;
+
+            // Remove the product row so that a new one can be added with updated values
+            deleteProduct(productId);
+        }
+
+        // Delete product function
+        function deleteProduct(productId) {
+            const productRow = document.getElementById(productId);
+            productRow.remove();
+
+            // Decrease the product count and update the total products display
+            productCount--;
+            document.getElementById('totalProducts').innerText = productCount;
+        }
+
+        // Update the total orders display
+        document.getElementById('totalOrders').innerText = orderCount;
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <style>
+      .checkout-container {
+        margin: 20px auto;
+        max-width: 800px;
+      }
+      .checkout-item {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .total-price {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="checkout-container">
+      <h2>Checkout</h2>
+      <div id="checkout-items"></div>
+      <p class="total-price" id="total-price">Total: ₹0</p>
+    </div>
+
+    <script>
+      function loadCheckout() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const checkoutItemsContainer = document.getElementById("checkout-items");
+        const totalPriceElement = document.getElementById("total-price");
+
+        // Clear the container
+        checkoutItemsContainer.innerHTML = "";
+
+        if (cart.length === 0) {
+          checkoutItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+          totalPriceElement.style.display = "none";
+          return;
+        }
+
+        let totalPrice = 0;
+
+        cart.forEach((item) => {
+          const checkoutItem = document.createElement("div");
+          checkoutItem.className = "checkout-item";
+
+          checkoutItem.innerHTML = `
+            <h5>${item.name}</h5>
+            <p>Price: ₹${item.price}</p>
+          `;
+
+          checkoutItemsContainer.appendChild(checkoutItem);
+          totalPrice += item.price;
+        });
+
+        totalPriceElement.innerHTML = `Total: ₹${totalPrice}`;
+      }
+
+      document.addEventListener("DOMContentLoaded", loadCheckout);
+    </script>
+    <script>
+      function loadCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartItemsContainer = document.getElementById("cart-items");
+    
+        // Clear the container
+        cartItemsContainer.innerHTML = "";
+    
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+          document.getElementById("checkout-button").style.display = "none"; // Hide the checkout button
+          return;
+        }
+    
+        document.getElementById("checkout-button").style.display = "block"; // Show the checkout button
+        cart.forEach((item, index) => {
+          const cartItem = document.createElement("div");
+          cartItem.className = "cart-item";
+    
+          cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" />
+            <div class="cart-item-details">
+              <h5>${item.name}</h5>
+              <p>Price: ₹${item.price}</p>
+            </div>
+            <button class="remove-button" onclick="removeFromCart(${index})">Remove</button>
+          `;
+    
+          cartItemsContainer.appendChild(cartItem);
+        });
+      }
+    
+      function removeFromCart(index) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1); // Remove the item at the given index
+        localStorage.setItem("cart", JSON.stringify(cart)); // Save the updated cart
+        loadCart(); // Refresh the cart display
+      }
+    
+      // Checkout button functionality
+      document.getElementById("checkout-button").addEventListener("click", () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.length === 0) {
+          alert("Your cart is empty!");
+          return;
+        }
+        // Redirect to the checkout page
+        window.location.href = "checkout.html"; // Replace with your checkout page URL
+      });
+    
+      // Load cart items when the page loads
+      document.addEventListener("DOMContentLoaded", loadCart);
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Saish Technology</title>
+
+    <!-- slider stylesheet -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="hero_area">
+      <!-- header section strats -->
+      <header class="header_section">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <span> SAISH TECHNOLOGY </span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class=""></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse innerpage_navbar"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="shop.html"> Shop </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="why.html"> Why Us </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="testimonial.html"> Testimonial </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+            </ul>
+            <div class="user_option">
+              <a href="login.html">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span> Login </span>
+              </a>
+              <a href="cart.html"
+                ><i class="fa fa-shopping-bag" aria-hidden="true"></i
+              ></a>
+
+              <form class="form-inline">
+                <button class="btn nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <!-- end header section -->
+    </div>
+    <!-- end hero area -->
+
+    <!-- shop section -->
+
+    <section class="shop_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>Latest Products</h2>
+        </div>
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/image_1.jpg" alt="Product 1" />
+              </div>
+              <h6>
+                Price: <span>450000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 1', 450000, 'images/image_1.jpg')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Product 2 -->
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/image_2.jpg" alt="Product 2" />
+              </div>
+              <h6>
+                Price: <span>50000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 2', 50000, 'images/image_2.jpg')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Product 3 -->
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/laptop2_image_10.jpg" alt="Product 3" />
+              </div>
+              <h6>
+                Price: <span>38000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 3', 38000, 'images/laptop2_image_10.jpg')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+          <!--product 4-->
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/laptop_4.jpg" alt="Product 4" />
+              </div>
+              <h6>
+                Price: <span>480000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 4', 480000, 'images/laptop_4.jpg')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+          <!--product 5-->
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/front-scaled_5.jpg" alt="Product 5" />
+              </div>
+              <h6>
+                Price: <span>52000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 3', 52000, 'images/front-scaled_5.jpg')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+
+          <!--product 6-->
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/laptop 3_image_6.jpg" alt="Product 6" />
+              </div>
+              <h6>
+                Price: <span>58000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 6', 52000, 'images/laptop 3_image_6.jpg')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+
+          <!--product 7-->
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/laptop4_image8.webp" alt="Product 8" />
+              </div>
+              <h6>
+                Price: <span>82000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 8', 82000, 'images/laptop4_image8.webp')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+
+           <!-- Product 8 -->
+           <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <div class="img-box">
+                <img src="images/dell1_image_9.webp" alt="Product 8" />
+              </div>
+              <h6>
+                Price: <span>45000</span>
+              </h6>
+              <div class="buttons">
+                <a
+                  href="BuyNow.html"
+                  class="buy-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 10px;
+                  "
+                  >Buy Now</a
+                >
+                <button
+                  onclick="addToCart('Product 8', 45000, 'images/dell1_image_9.webp')"
+                  class="add-to-cart-button"
+                  style="
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                    padding: 8px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                  "
+                >
+                  Add to Cart
+                </button>
+              </div>
+              <div class="new">
+                <span>New</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more product cards as needed -->
+        </div>
+        <div class="btn-box">
+          <a href="#">View All Products</a>
+        </div>
+      </div>
+    </section>
+    
+    
+
+    <!-- info section -->
+
+    <section class="info_section layout_padding2-top">
+      <div class="social_container">
+        <div class="social_box">
+          <a href="">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-youtube" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="info_container">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-3">
+              <h6>ABOUT US</h6>
+              <p>
+                Welcome to Shriram Store, your ultimate destination for stylish
+                and affordable clothing in Nehru Chowk. With [insert number of
+                years] years of expertise, we specialize in offering
+                fashion-forward designs without compromising on quality or price
+              </p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="info_form">
+                <h5>Newsletter</h5>
+                <form action="#">
+                  <input type="email" placeholder="Enter your email" />
+                  <button>Subscribe</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <h6>NEED HELP</h6>
+              <p>
+                FAQs: Check out our frequently asked questions section for quick
+                answers to common queries about ordering, shipping, returns, and
+                more. Contact Us: Have a specific question or concern?
+              </p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <h6>CONTACT US</h6>
+              <div class="info_link-box">
+                <a href="">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span> Nehru Chowk, Nashik </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>+91 8308866072</span>
+                </a>
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span> Shriramshop@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer section -->
+      <footer class="footer_section">
+        <div class="container">
+          <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="">@pranavShukla web house</a>
+          </p>
+        </div>
+      </footer>
+      <!-- footer section -->
+    </section>
+
+    <!-- end info section -->
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+      // Add to Cart Function
+      function addToCart(productName, price, imageUrl) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const newItem = { name: productName, price: price, image: imageUrl };
+        cart.push(newItem); // Add the product to the cart array
+        localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart to localStorage
+        alert(`${productName} added to cart!`);
+      }
+    </script>
+  </body>
+</html>
